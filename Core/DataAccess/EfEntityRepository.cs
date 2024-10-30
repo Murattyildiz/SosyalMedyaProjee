@@ -17,15 +17,20 @@ namespace Core.DataAccess
         {
             using (var context = new TContext()) 
             {
-              var deletededEntity=context.Entry(entity);
-              deletededEntity.State=EntityState.Added;
+              var adddedEntity=context.Entry(entity);
+              adddedEntity.State=EntityState.Added;
               context.SaveChanges();
             }
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                var deletededEntity = context.Entry(entity);
+                deletededEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
