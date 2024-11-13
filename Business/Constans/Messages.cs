@@ -9,6 +9,7 @@ namespace Business.Constans
 {
     public class Messages
     {
+        public static string UsersListed;
         public static string İçerik_Add="Paylaşım Yapıldı";
         public static string İçerik_Edit;
         public static string İçerik_Deleted;
@@ -25,9 +26,16 @@ namespace Business.Constans
         public static string Konu_List;
         public static string Konus_List;
         internal static string UserRegistered;
-        internal static User UserNotFound;
-        internal static User PasswordError;
+        internal static string UserNotFound;
+        internal static string PasswordError;
         internal static string SuccessfulLogin;
         internal static string UserExist;
+        internal static string UserNotExist;
+        internal static string UserEmailExist;
+        internal static string userEmailNotAvailable;
+        internal static string UserUpdated;
+        internal static string UserListed;
+        internal static string UserDeleted;
+        internal static string UserAdded;
     }
 }
