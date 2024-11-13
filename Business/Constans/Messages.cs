@@ -25,17 +25,18 @@ namespace Business.Constans
         public static string Konu_Update;
         public static string Konu_List;
         public static string Konus_List;
-        internal static string UserRegistered;
-        internal static string UserNotFound;
-        internal static string PasswordError;
-        internal static string SuccessfulLogin;
-        internal static string UserExist;
-        internal static string UserNotExist;
-        internal static string UserEmailExist;
-        internal static string userEmailNotAvailable;
-        internal static string UserUpdated;
-        internal static string UserListed;
-        internal static string UserDeleted;
-        internal static string UserAdded;
+        public static string UserRegistered;
+        public static string UserNotFound;
+        public static string PasswordError;
+        public static string SuccessfulLogin;
+        public static string UserExist;
+        public static string UserNotExist;
+        public static string UserEmailExist;
+        public static string userEmailNotAvailable;
+        public static string UserUpdated;
+        public static string UserListed;
+        public static string UserDeleted="Kullanıcı silindi";
+        public static string UserAdded="Kullanıcı eklendi";
+        public static string? AuthorizationDenied="Bu işlem için yetkiniz yok";
     }
 }
