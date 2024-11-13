@@ -23,5 +23,6 @@ namespace Business.Constans
         public static string Konu_Update;
         public static string Konu_List;
         public static string Konus_List;
+        internal static string UserRegistered;
     }
 }
