@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utulities.Result.Abstract;
 using Core.Utulities.Result.Concrete;
@@ -8,6 +10,7 @@ using Core.Utulities.Security.JWT;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,22 +30,30 @@ namespace Business.Concrete
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            throw new NotImplementedException();
+            var claims = _userService.GetClaims(user);
+            var accessToken = _tokenHelper.CreateToken(user, claims.Data);
+            return new SuccessDataResult<AccessToken>(accessToken, user.FirstName);
         }
 
+
+        [ValidationAspect(typeof(UserForLoginDtoValidator))]
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = _userService.GetUserByMail(userForLoginDto.Email);
             if (userToCheck.Data == null)
             {
-                return new ErroDataResult 
+                return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
-          
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
+            {
+                return new ErrorDataResult<User>(Messages.PasswordError);
+            }
 
-         
+            return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessfulLogin);
         }
 
+        [ValidationAspect(typeof(UserForRegisterDtoValidator))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string passowrd)
         {
             byte[] passwordHash, passwordSalt;
@@ -64,7 +75,12 @@ namespace Business.Concrete
 
         public IResult UserExist(string email)
         {
-            throw new NotImplementedException();
+            var check = _userService.GetUserByMail(email);
+            if (check.Data != null)
+            {
+                return new ErrorResult(Messages.UserExist);
+            }
+            return new SuccessResult();
         }
     }
 }
