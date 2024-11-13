@@ -18,5 +18,7 @@ namespace Business.Abstract
 
         IDataResult<UserDto> GetUserDtoById(int userId);
 
+        IResult Delete(int userId);
+
     }
 }
