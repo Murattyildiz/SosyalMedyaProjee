@@ -23,6 +23,16 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
+            builder.RegisterType<İçerikManager>().As<IİçerikService>().SingleInstance();
+            builder.RegisterType<EfİçerikDal>().As<IİçerikDal>().SingleInstance();
+
+            //builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance();
+            //builder.RegisterType<EfCommentDal>().As<ICommentDal>().SingleInstance();
+
+
+            //builder.RegisterType<KonuManager>().As<IKonuService>().SingleInstance();
+            //builder.RegisterType<EfKonuDal>().As<IKonuDal>().SingleInstance();
+
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
 

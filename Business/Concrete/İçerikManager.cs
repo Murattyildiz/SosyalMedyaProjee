@@ -5,6 +5,7 @@ using Core.Utulities.Result.Abstract;
 using Core.Utulities.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,20 +35,23 @@ namespace Business.Concrete
             return new SuccessResult(Messages.İçerik_Deleted);
         }
 
-        public IResult Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public IDataResult<List<İçerik>> GetAll()
         {
             return new SuccessDataResult<List<İçerik>>(_içerikDal.GetAll(),Messages.İçeriks_Listed);
+        }
+
+        public IDataResult<List<İçerikDetailDto>> GetİçerikDetails()
+        {
+           return new SuccessDataResult<List<İçerikDetailDto>>(_içerikDal.GetİçerikDetails(), Messages.İçerikWithDetailListed);
         }
 
         public IDataResult<İçerik> GetById(int id)
         {
            return new SuccessDataResult<İçerik>(_içerikDal.Get(x=>x.Id==id),Messages.İçerik_Listed);
         }
+
+        
 
         public IResult Update(İçerik entity)
         {

@@ -43,8 +43,12 @@ namespace Business.Concrete
             }
             var deletedUser = _userDal.Get(x => x.Id == id);
             _userDal.Delete(deletedUser);
-            return new SuccessResult(Messages.userDeleted);
+            return new SuccessResult(Messages.UserDeleted);
 
+        }
+        public IResult Delete(User entity)
+        {
+            throw new NotImplementedException();
         }
 
         public IDataResult<List<User>> GetAll()
@@ -152,5 +156,6 @@ namespace Business.Concrete
             return _userDal.GetAll(x => x.Email == userEmail).Any();
         }
 
+       
     }
 }
