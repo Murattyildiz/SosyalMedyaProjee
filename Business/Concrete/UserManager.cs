@@ -34,16 +34,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
-        public IResult Delete(User entity)
+        public IResult Delete(int id)
         {
-            var rulesResult = BusinessRules.Run(CheckIfUserIdExist(entity.Id));
-            if(rulesResult != null)
+            var rulesResult = BusinessRules.Run(CheckIfUserIdExist(id));
+            if (rulesResult != null)
             {
                 return rulesResult;
             }
-            var deletedUser = _userDal.Get(x => x.Id == entity.Id);
+            var deletedUser = _userDal.Get(x => x.Id == id);
             _userDal.Delete(deletedUser);
-            return new SuccessResult(Messages.UserDeleted);
+            return new SuccessResult(Messages.userDeleted);
+
         }
 
         public IDataResult<List<User>> GetAll()
@@ -150,5 +151,6 @@ namespace Business.Concrete
         {
             return _userDal.GetAll(x => x.Email == userEmail).Any();
         }
+
     }
 }

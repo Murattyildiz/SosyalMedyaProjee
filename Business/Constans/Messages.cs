@@ -38,5 +38,7 @@ namespace Business.Constans
         public static string UserDeleted="Kullanıcı silindi";
         public static string UserAdded="Kullanıcı eklendi";
         public static string? AuthorizationDenied="Bu işlem için yetkiniz yok";
+        public static string userDeleted;
+        public static string CommentNotFound;
     }
 }

@@ -27,10 +27,16 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Comment_Add);
         }
 
-        public IResult Delete(Comment entity)
+        public IResult Delete(int id)
         {
-            _commentDal.Delete(entity);
-            return new SuccessResult(Messages.Comment_Delete);
+            var deleteComment = _commentDal.Get(x => x.Id == id);
+            if (deleteComment != null)
+            {
+                _commentDal.Delete(deleteComment);
+
+                return new SuccessResult(Messages.Comment_Delete);
+            }
+            return new ErrorResult(Messages.CommentNotFound);
         }
 
         public IDataResult<List<Comment>> GetAll()

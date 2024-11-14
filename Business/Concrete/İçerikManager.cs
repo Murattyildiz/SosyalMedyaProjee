@@ -34,6 +34,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.İçerik_Deleted);
         }
 
+        public IResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<List<İçerik>> GetAll()
         {
             return new SuccessDataResult<List<İçerik>>(_içerikDal.GetAll(),Messages.İçeriks_Listed);

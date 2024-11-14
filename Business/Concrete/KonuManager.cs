@@ -28,6 +28,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Konu_Delete);
         }
 
+        public IResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<List<Konu>> GetAll()
         {
             return new SuccessDataResult<List<Konu>>(_konuDal.GetAll(), Messages.Konus_List);
