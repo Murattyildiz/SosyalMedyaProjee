@@ -16,6 +16,7 @@ namespace Entities.DTOs
 
         public string KonuTitle { get; set; }
 
+        public string Content { get; set; }
         public string UserName { get; set; }
 
         public List<CommentDetailDto> CommentDetailDtos { get; set; }

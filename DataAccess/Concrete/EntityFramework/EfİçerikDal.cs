@@ -26,6 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
                                Id = A.Id,
                                KonuId = A.KonuId,
                                KonuTitle= T.KonuTitle,
+                               Content=A.Content,
                                UserId = A.UserId,
                                UserName = U.FirstName + " " + U.LastName,
                                CommentDetailDtos = ((from C in context.Comments
