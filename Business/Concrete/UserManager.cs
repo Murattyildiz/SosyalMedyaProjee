@@ -1,11 +1,17 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constans;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConncerns.Logging.Log4Net.Logger;
 using Core.Entities.Concrete;
 using Core.Utulities.Business;
 using Core.Utulities.Result.Abstract;
 using Core.Utulities.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.DTOs;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +28,9 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
-
+        [LogAspect(typeof(FileLogger))]
+        //[SecuredOperation("admin,user")]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Add(User entity)
         {
             var rulesResult = BusinessRules.Run(CheckIfEmailExist(entity.Email));
@@ -33,7 +41,9 @@ namespace Business.Concrete
             _userDal.Add(entity);
             return new SuccessResult(Messages.UserAdded);
         }
-
+        [LogAspect(typeof(FileLogger))]
+        [SecuredOperation("admin,user")]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Delete(int id)
         {
             var rulesResult = BusinessRules.Run(CheckIfUserIdExist(id));
@@ -61,7 +71,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<UserDto>>(_userDal.GetUserDtos(), Messages.UsersListed);
         }
 
-        public IDataResult<User> GetById(int id)
+        public IDataResult<User> GetEntityById(int id)
         {
             var user=_userDal.Get(x=>x.Id == id);
             if(user!= null)
@@ -90,7 +100,9 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<UserDto>(_userDal.GetUserDtos(x=>x.Id == userId).SingleOrDefault(),Messages.UserListed);
         }
-
+        [LogAspect(typeof(FileLogger))]
+        // [SecuredOperation("admin,user")]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Update(User entity)
         {
            var result=BusinessRules.Run(CheckIfUserIdExist(entity.Id), CheckIfEmailAvailable(entity.Email));
@@ -101,7 +113,10 @@ namespace Business.Concrete
             _userDal.Update(entity);
             return new SuccessResult(Messages.UserUpdated);
         }
-
+        [LogAspect(typeof(FileLogger))]
+        [SecuredOperation("admin,user")]
+        //[ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult UpdateByDto(UserDto userDto)
         {
            var rulesResult=BusinessRules.Run(CheckIfUserIdExist(userDto.Id), CheckIfEmailAvailable(userDto.Email));

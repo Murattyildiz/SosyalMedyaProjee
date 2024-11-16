@@ -40,5 +40,8 @@ namespace Business.Constans
         public static string? AuthorizationDenied="Bu işlem için yetkiniz yok";
         public static string CommentNotFound;
         internal static string İçerikWithDetailListed="Paylaşımlar ve Yorumlar Listelendi";
+        internal static string FalseComment;
+        internal static string İçerikNotFound;
+        internal static string KonuNotFound;
     }
 }

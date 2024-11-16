@@ -14,5 +14,7 @@ namespace Business.Abstract
     {
 
      IDataResult<List<İçerikDetailDto>> GetİçerikDetails();
+     //IDataResult<List<İçerikDetailsDto>> GetArticleDetailsByUserId(int id);
+     //IDataResult<İçerikDetailslDto> GetArticleDetailsById(int id);
     }
 }

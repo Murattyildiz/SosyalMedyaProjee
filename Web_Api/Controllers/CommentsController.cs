@@ -24,7 +24,7 @@ namespace Web_Api.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            IDataResult<Comment> result = _commentService.GetById(id);
+            IDataResult<Comment> result = _commentService.GetEntityById(id);
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
@@ -43,9 +43,9 @@ namespace Web_Api.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Comment comment)
+        public IActionResult Delete(int id)
         {
-            IResult result = _commentService.Delete(comment);
+            IResult result = _commentService.Delete(id);
             return result.Success ? Ok(result) : BadRequest(result);
         }
 

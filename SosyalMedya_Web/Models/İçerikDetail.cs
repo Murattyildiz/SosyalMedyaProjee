@@ -1,13 +1,6 @@
-﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entities.DTOs
+﻿namespace SosyalMedya_Web.Models
 {
-    public class İçerikDetailDto:IDto
+    public class İçerikDetail
     {
         public int Id { get; set; }
         public int KonuId { get; set; }
@@ -21,6 +14,6 @@ namespace Entities.DTOs
 
         public string SharingDate { get; set; }
 
-        public List<CommentDetailDto> CommentDetailDtos { get; set; }
+        public List<CommentDetail> CommentDetails { get; set; }
     }
 }

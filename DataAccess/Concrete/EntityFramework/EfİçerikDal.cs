@@ -28,6 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                                KonuTitle= T.KonuTitle,
                                Content=A.Content,
                                UserId = A.UserId,
+                               SharingDate=A.SharingDate.ToShortDateString(),
                                UserName = U.FirstName + " " + U.LastName,
                                CommentDetailDtos = ((from C in context.Comments
                                                    join User in context.Users on C.UserId equals User.Id

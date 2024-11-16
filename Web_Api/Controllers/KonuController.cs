@@ -24,7 +24,7 @@ namespace Web_Api.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            IDataResult<Konu> result = _konuService.GetById(id);
+            IDataResult<Konu> result = _konuService.GetEntityById(id);
             return result.Success ? Ok(result) : BadRequest(result);
         }
         [HttpPost("add")]
@@ -42,9 +42,9 @@ namespace Web_Api.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Konu konu)
+        public IActionResult Delete(int id)
         {
-            IResult result = _konuService.Delete(konu);
+            IResult result = _konuService.Delete(id);
             return result.Success ? Ok(result) : BadRequest(result);
         }
     }
