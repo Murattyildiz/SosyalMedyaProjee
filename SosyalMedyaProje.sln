@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Busine
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{AF4D86EC-D4BF-4466-B133-4CA88B4DD680}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Api", "Web_Api\Web_Api.csproj", "{E63C40FB-3547-4E15-8563-9C1368175707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web_Api", "Web_Api\Web_Api.csproj", "{E63C40FB-3547-4E15-8563-9C1368175707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SosyalMedya_Web", "SosyalMedya_Web\SosyalMedya_Web.csproj", "{056D7FF1-FCE6-481C-9155-EFE2FDB9D62F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E63C40FB-3547-4E15-8563-9C1368175707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E63C40FB-3547-4E15-8563-9C1368175707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E63C40FB-3547-4E15-8563-9C1368175707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{056D7FF1-FCE6-481C-9155-EFE2FDB9D62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056D7FF1-FCE6-481C-9155-EFE2FDB9D62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056D7FF1-FCE6-481C-9155-EFE2FDB9D62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056D7FF1-FCE6-481C-9155-EFE2FDB9D62F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

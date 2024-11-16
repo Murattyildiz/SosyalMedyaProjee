@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Aspects\Autofac\Performance\**" />
+    <EmbeddedResource Remove="Aspects\Autofac\Performance\**" />
+    <None Remove="Aspects\Autofac\Performance\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Castle.Core" Version="5.1.1" />
     <PackageReference Include="FluentValidation" Version="11.10.0" />
     <PackageReference Include="log4net" Version="3.0.2" />
@@ -18,10 +24,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Aspects\Autofac\Performance\" />
   </ItemGroup>
 
 </Project>
